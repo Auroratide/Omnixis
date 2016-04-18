@@ -24,7 +24,7 @@
 	
 	<style>
 		html,body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-		#openfl-content { background: #000000; width: auto; height: 100%; }
+		#openfl-content { background: #000000; width: 928px; height: 928px; }
 		
 		@font-face {
 			font-family: 'Nokia Cellphone FC Small';
