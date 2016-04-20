@@ -103,7 +103,7 @@ class PlayState extends BlocksState {
 						g.destroy();
 					}
 				}
-				if(player.alive) {
+				if(player.alive && elapsedBeats % 2 == 0) {
 					blockGroups.add(generateRandomGroup());
 				}
 			}
@@ -186,6 +186,8 @@ class PlayState extends BlocksState {
 			case 145: beats = C.HEARTBEAT_LV_7;
 			case 200: beats = C.HEARTBEAT_LV_8;
 			default:
+				if (elapsedBeats > 200 && (elapsedBeats+200) % 120 == 0 && beats > 30)
+					beats -= 2;
 		}
 	}
 	
