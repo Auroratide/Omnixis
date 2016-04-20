@@ -186,7 +186,7 @@ class PlayState extends BlocksState {
 			case 145: beats = C.HEARTBEAT_LV_7;
 			case 200: beats = C.HEARTBEAT_LV_8;
 			default:
-				if (elapsedBeats > 200 && (elapsedBeats+200) % 120 == 0 && beats > 30)
+				if (elapsedBeats > 200 && heartbeat() && (elapsedBeats+200) % 60 == 0 && beats > 30)
 					beats -= 2;
 		}
 	}
