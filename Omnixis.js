@@ -101,7 +101,7 @@ ApplicationMain.init = function() {
 	if(total == 0) ApplicationMain.start();
 };
 ApplicationMain.main = function() {
-	ApplicationMain.config = { build : "293", company : "Timothy Foster (tfAuroratide)", file : "Omnixis", fps : 60, name : "Omnixis", orientation : "", packageName : "com.example.myapp", version : "0.0.1", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : false, height : 928, parameters : "{}", resizable : false, stencilBuffer : true, title : "Omnixis", vsync : true, width : 928, x : null, y : null}]};
+	ApplicationMain.config = { build : "9", company : "Timothy Foster (tfAuroratide)", file : "Omnixis", fps : 60, name : "Omnixis", orientation : "", packageName : "com.example.myapp", version : "0.0.1", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : false, height : 928, parameters : "{}", resizable : false, stencilBuffer : true, title : "Omnixis", vsync : true, width : 928, x : null, y : null}]};
 };
 ApplicationMain.start = function() {
 	var hasMain = false;
@@ -5422,7 +5422,7 @@ PlayState.prototype = $extend(BlocksState.prototype,{
 						g.destroy();
 					}
 				}
-				if(this.player.alive) this.blockGroups.add(this.generateRandomGroup());
+				if(this.player.alive && this.elapsedBeats % 2 == 0) this.blockGroups.add(this.generateRandomGroup());
 			}
 			if(this.player.alive) {
 				var info = this.player.eliminateRows();
@@ -5491,6 +5491,7 @@ PlayState.prototype = $extend(BlocksState.prototype,{
 			this.beats = 48;
 			break;
 		default:
+			if(this.elapsedBeats > 200 && this.heartbeat() && (this.elapsedBeats + 200) % 60 == 0 && this.beats > 30) this.beats -= 2;
 		}
 	}
 	,generateRandomGroup: function() {
